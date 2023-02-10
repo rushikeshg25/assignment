@@ -31,12 +31,12 @@ const Cart = (props) => {
 
   //Submitting Name of the User to Server using fetch
   const submitOrderHandler = (userData) => {
-    // fetch("", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     user: userData,
-    //   }),
-    // });
+    fetch("", {
+      method: "POST",
+      body: JSON.stringify({
+        user: userData,
+      }),
+    });
   };
 
   //Display the Items in the Cart
