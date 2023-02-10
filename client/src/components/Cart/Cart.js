@@ -4,6 +4,7 @@ import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 import Checkout from "./Checkout";
+import axios from "axios";
 
 const Cart = (props) => {
   //State variable to check whether checkout is clicked
@@ -30,13 +31,14 @@ const Cart = (props) => {
   };
 
   //Submitting Name of the User to Server using fetch
-  const submitOrderHandler = (userData) => {
-    fetch("", {
-      method: "POST",
-      body: JSON.stringify({
-        user: userData,
-      }),
-    });
+  const submitOrderHandler = async (userData) => {
+    const discountResponse = await axios.post(
+      "http://localhost:3001/checkout",
+      userData
+    );
+    const res = discountResponse.data;
+
+    console.log(res);
   };
 
   //Display the Items in the Cart

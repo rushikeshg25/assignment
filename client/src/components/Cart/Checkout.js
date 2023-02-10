@@ -3,21 +3,17 @@ import { useRef, useState } from "react";
 import classes from "./Checkout.module.css";
 //Check Empty Fields
 const isEmpty = (value) => value.trim() === "";
-//to check if postal Code is valid
-const isFiveChars = (value) => value.trim().length === 5;
 
 const Checkout = (props) => {
   //State to set user Validity
   const [formInputsValidity, setFormInputsValidity] = useState({
     name: true,
     street: true,
-    postalCode: true,
   });
 
   //Accepting User input using UseRef hook
   const nameInputRef = useRef();
   const streetInputRef = useRef();
-  const postalCodeInputRef = useRef();
 
   const confirmHandler = (event) => {
     //Prevent browser to sent http request
@@ -25,21 +21,16 @@ const Checkout = (props) => {
     //Validation on User Data
     const enteredName = nameInputRef.current.value;
     const enteredStreet = streetInputRef.current.value;
-    const enteredPostalCode = postalCodeInputRef.current.value;
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredStreetIsValid = !isEmpty(enteredStreet);
-    const enteredPostalCodeIsValid = isFiveChars(enteredPostalCode);
 
     setFormInputsValidity({
       name: enteredNameIsValid,
       street: enteredStreetIsValid,
-
-      postalCode: enteredPostalCodeIsValid,
     });
 
-    const formIsValid =
-      enteredNameIsValid && enteredStreetIsValid && enteredPostalCodeIsValid;
+    const formIsValid = enteredNameIsValid && enteredStreetIsValid;
 
     if (!formIsValid) {
       return;
@@ -56,9 +47,6 @@ const Checkout = (props) => {
   const streetControlClasses = `${classes.control} ${
     formInputsValidity.street ? "" : classes.invalid
   }`;
-  const postalCodeControlClasses = `${classes.control} ${
-    formInputsValidity.postalCode ? "" : classes.invalid
-  }`;
 
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
@@ -71,13 +59,6 @@ const Checkout = (props) => {
         <label htmlFor="street">Street</label>
         <input type="text" id="street" ref={streetInputRef} />
         {!formInputsValidity.street && <p>Please enter a valid street!</p>}
-      </div>
-      <div className={postalCodeControlClasses}>
-        <label htmlFor="postal">Postal Code</label>
-        <input type="text" id="postal" ref={postalCodeInputRef} />
-        {!formInputsValidity.postalCode && (
-          <p>Please enter a valid postal code (5 characters long)!</p>
-        )}
       </div>
       <div className={classes.actions}>
         <button type="button" onClick={props.onCancel}>
