@@ -19,7 +19,7 @@
 
 #Technical
 
--The Discount logic is implemented such that when a user is not listed in mongodb and he makes an order the backend checks his record in the MongoDB and then it will create a new record with {name,orders=0} and if the user's record is present node will fetch the current number of orders and add one to it if the new orders are divisible by n this will be saved in state varibale which will be further used to deduct 10% of total price of shopping of the User and the backend will delete users old record and add {name,orders+1}.
+-The Discount logic is implemented such that when a user is not listed in mongodb and he makes an order the backend checks his record in the MongoDB and then it will create a new record with {name,orders=1} and if the user's record is present node will fetch the current number of orders and add one to it if the new orders are divisible by n this will be saved in state varibale which will be further used to deduct 10% of total price of shopping of the User and the backend will delete users old record and add {name,orders+1}.
 -The mongo URI is saved as enviornment variable
 
 #To run the app
