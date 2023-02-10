@@ -1,5 +1,5 @@
 const express = require("express");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const axios = require("axios");
@@ -12,8 +12,7 @@ app.use(
     origin: "*",
   })
 );
-const URI =
-  "mongodb+srv://rushikesh:rushikesh@ecommerce.alpg7vr.mongodb.net/?retryWrites=true&w=majority";
+const URI = process.env.MONGO_URI;
 
 //Value of n for which you want to offer discount
 const n = 5;
