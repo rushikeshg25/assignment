@@ -1,3 +1,19 @@
+<h1 align="center">
+       NewStackApp Assignment
+</h1>
+
+
+## Tech Stack : 
+
+- **Frontend:** HTML,CSS,React Js, Java Script
+- **Version Control:** Git and GitHub
+- **Backend:** NodeJs,Express,MongoDB
+- **Code Editor and tools**: VS Code
+
+
+
+
+
 # Assignment
 
 You are designing an ecommerce store. Clients can add items to their cart and checkout to successfully place an order. Every *n*th order gets a coupon code for 10% discount and can apply to their cart. 
