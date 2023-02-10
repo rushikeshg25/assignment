@@ -16,6 +16,8 @@ const Cart = (props) => {
   const totalAmount = `Rs${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
 
+  //to set final amount after discount price
+  const [finalAmountafterDiscount, setFinalAmountafterDiscount] = useState();
   //remove that Item from cart
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
@@ -38,7 +40,12 @@ const Cart = (props) => {
     );
     const res = discountResponse.data;
 
-    console.log(res);
+    if (res === "Discount on this order") {
+      const amt = totalAmount - 0.1 * totalAmount;
+      setFinalAmountafterDiscount(amt);
+    } else {
+      setFinalAmountafterDiscount(totalAmount);
+    }
   };
 
   //Display the Items in the Cart
@@ -76,7 +83,7 @@ const Cart = (props) => {
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>{totalAmount}</span>
+        <span>{finalAmountafterDiscount}</span>
       </div>
       {isCheckout && (
         <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
