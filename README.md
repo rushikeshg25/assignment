@@ -1,3 +1,39 @@
+<h1 align="center">
+       NewStackApp Assignment
+</h1>
+
+
+## Tech Stack : 
+
+- **Frontend:** HTML,CSS,React Js, Java Script
+- **Version Control:** Git and GitHub
+- **Backend:** NodeJs,Express,MongoDB
+- **Code Editor and tools**: VS Code
+
+#Features
+<ul>
+       <li>Added extra layer of validation of data entered by User</li>
+       <li>Modal Overlay for Cart which is rendered in another Div of index.html with classname Overlay</li>
+       <li>User can edit his items from his cart</li>  
+</ul>
+
+#Technical
+
+-The Discount logic is implemented such that when a user is not listed in mongodb and he makes an order the backend checks his record in the MongoDB and then it will create a new record with {name,orders=1} and if the user's record is present node will fetch the current number of orders and add one to it if the new orders are divisible by n this will be saved in state varibale which will be further used to deduct 10% of total price of shopping of the User and the backend will delete users old record and add {name,orders+1}.
+-The mongo URI is saved as enviornment variable
+
+#To run the app
+
+<ol>
+       <li>Clone the following repository</li>
+       <li>navigate to client and server in two terminals and type npm i</li>
+       <li>go to Atlas MongoDB and create a new cluster grab the Mongo URI</li>
+       <li>create .env and  MONGO_URI=paste your URI here</li>
+       <li>npm run dev in server dir</li>
+       <li>npm start in client dir</li>
+</ol>
+
+
 # Assignment
 
 You are designing an ecommerce store. Clients can add items to their cart and checkout to successfully place an order. Every *n*th order gets a coupon code for 10% discount and can apply to their cart. 
