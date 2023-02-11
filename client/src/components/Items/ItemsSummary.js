@@ -5,7 +5,7 @@ const ItemsSummary = () => {
     <section className={classes.summary}>
       <h2>A</h2>
       <p>E-commerce</p>
-      <p>Best of the Best</p>
+      <p>E-commerce</p>
     </section>
   );
 };
